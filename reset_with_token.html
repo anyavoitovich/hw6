@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset password with token</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Reset password with token</h2>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form id="resetWithTokenForm" action="{{ url_for('reset_with_token', token=token) }}" method="POST">
+        <label for="new_password">New password:</label>
+        <input type="password" name="new_password" required>
+        <button type="submit">Reset password</button>
+    </form>
+</body>
+</html>
